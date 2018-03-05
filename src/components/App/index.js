@@ -4,6 +4,9 @@ import {
   Route,
 } from 'react-router-dom';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
@@ -14,12 +17,16 @@ import AccountPage from '../Account';
 import withAuthentication from '../Session/withAuthentication';
 import * as routes from '../../constants/routes';
 
+
 import './index.css';
 
 const App = () =>
   <Router>
-    <div className="app">
-      <Navigation />
+    <MuiThemeProvider>
+    <Navigation />
+    <div className="w3-display-middle">
+    
+      
 
       <hr/>
 
@@ -31,9 +38,11 @@ const App = () =>
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
 
       <hr/>
-
-      <span>Found in <a href="https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE">Taming the State in React</a></span> | <span>Star the <a href="https://github.com/rwieruch/react-redux-firebase-authentication">Repository</a></span> | <span>Receive a <a href="https://www.getrevue.co/profile/rwieruch">Developer's Newsletter</a></span>
+      
+     
+      
     </div>
+    </MuiThemeProvider>
   </Router>
 
 export default withAuthentication(App);

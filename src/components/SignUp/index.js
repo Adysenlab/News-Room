@@ -7,9 +7,12 @@ import {
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
 
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 const SignUpPage = ({ history }) =>
   <div>
-    <h1>SignUp</h1>
     <SignUpForm history={history} />
   </div>
 
@@ -80,37 +83,56 @@ class SignUpForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={username}
-          onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          value={email}
-          onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={passwordOne}
-          onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          value={passwordTwo}
-          onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+        
 
-        { error && <p>{error.message}</p> }
-      </form>
+        <Card>
+    <CardHeader
+      title="Signup"
+      subtitle="utilize next generation"
+      
+    />
+    
+    <CardText>
+    <TextField
+        value={username}
+        onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
+          hintText="Full Name"
+        />
+        
+        <br/>
+        <TextField
+        value={email}
+        onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+          hintText="Email Address"
+        />
+        
+        <br/>
+        <TextField
+        value={passwordOne}
+        onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
+        type="password"
+          hintText="Password"
+        />
+        <br/>
+       
+        <TextField
+        value={passwordTwo}
+        onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
+        type="password"
+          hintText="Confirm Password"
+        />
+        
+        
+    </CardText>
+    <CardActions>
+    <RaisedButton label="Sign Up" primary={true}  type="submit" disabled={isInvalid} />
+
+    { error && <p>{error.message}</p> }
+    </CardActions>
+  </Card>
+
+
+        
     );
   }
 }

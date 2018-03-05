@@ -1,9 +1,19 @@
 import React from 'react';
 
+import BottomNavigationExampleSimple from '../newNavigation'
+import TextField from 'material-ui/TextField';
+
+
 const LandingPage = () =>
   <div>
-    <h1>Landing</h1>
-    <p>The Landing Page is open to everyone, even though the user isn't signed in.</p>
+    
+    <TextField
+      hintText="Hint Text"
+      floatingLabelText="Floating Label Text"
+      fullWidth={true}
+    /><br />
+      <BottomNavigationExampleSimple/>
+    
   </div>
 
 export default LandingPage;
