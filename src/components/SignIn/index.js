@@ -65,15 +65,17 @@ class SignInForm extends Component {
     return (
       <div style={{margin: '12px 0'}}>
         <RaisedButton
-          label={stepIndex === 2 ? 'Finish' : 'Next'}
-          type ={stepIndex == 2 ? 'submit': 'button'}
-          disabled = {stepIndex === 2 ? (password === '' ||
-          email === '') : false}
+          
           disableTouchRipple={true}
           disableFocusRipple={true}
           primary={true}
           onClick={this.handleNext}
           style={{marginRight: 12}}
+          label={stepIndex === 2 ? 'Finish' : 'Next'}
+          type ={stepIndex === 2 ? 'submit': null}
+          onSubmit ={stepIndex === 2 ? this.onSubmit : null }
+          disabled = {stepIndex === 2 ? (password === '' ||
+          email === '') : false}
         />
         {step > 0 && (
           <FlatButton
@@ -106,6 +108,7 @@ class SignInForm extends Component {
       })
       .catch(error => {
         this.setState(updateByPropertyName('error', error));
+        console.log("sign in error")
       });
 
     event.preventDefault();
@@ -128,8 +131,8 @@ class SignInForm extends Component {
 
     return (
       
-        
-        <Card onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} >
+        <Card >
     <CardHeader
       title="Sign in"
       subtitle="Where the game begins"
@@ -182,7 +185,7 @@ class SignInForm extends Component {
     
   </Card>
      
-        
+        </form>
     );
   }
 }

@@ -22,9 +22,12 @@ import './index.css';
 
 const App = () =>
   <Router>
+    
     <MuiThemeProvider>
+      <div >
     <Navigation />
-    <div className="w3-display-middle">
+    </div>
+    <div className="w3-display-middle" >
     
       
 

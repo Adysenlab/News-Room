@@ -14,6 +14,8 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
+import Drawer from 'material-ui/Drawer';
+import Divider from 'material-ui/Divider';
 
 function handleClick() {
   alert('onClick triggered on the title component');
@@ -33,12 +35,15 @@ const Navigation = ({ authUser }) =>
   </div>
 
 const NavigationAuth = () =>
-  <ul>
-    <li><Link to={routes.LANDING}>Landing</Link></li>
-    <li><Link to={routes.HOME}>Home</Link></li>
-    <li><Link to={routes.ACCOUNT}>Account</Link></li>
-    <li><SignOutButton /></li>
-  </ul>
+<Drawer open={true} className= {"w3-sidebar w3-bar-block w3-card "} >
+          <MenuItem  containerElement={<Link to={routes.LANDING} />} >LANDING</MenuItem>
+          <MenuItem  containerElement={<Link to={routes.HOME} />} >HOME</MenuItem>
+          <MenuItem  containerElement={<Link to={routes.ACCOUNT} />} >ACCOUNT</MenuItem>
+          <Divider/>
+          <MenuItem linkButton={true} containerElement={<SignOutButton/>} >Signout</MenuItem>
+        </Drawer>
+
+
 
 const NavigationNonAuth = () =>
  <Toolbar>
