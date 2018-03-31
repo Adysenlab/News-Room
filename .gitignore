@@ -91,5 +91,6 @@ typings/
 !.vscode/extensions.json
 .history
 
-
+### Don't add build directory to github ###
+build/*
 # End of https://www.gitignore.io/api/node,visualstudiocode
