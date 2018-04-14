@@ -18,12 +18,18 @@ class HomePage extends Component {
     const { users } = this.props;
 
     return (
-      <div>
+      <div className="w3-row" >
+      
+        <div className="w3-col m3"><h1>left panel</h1></div>
+        <div className="w3-col m7">
         <h1>Home</h1>
         <p>The Home Page is accessible by every signed in user.</p>
 
         { !!users && <UserList users={users} /> }
       </div>
+      <div className="w3-col m2"> <h1>right panel</h1> </div>
+      </div>
+      
     );
   }
 }

@@ -38,6 +38,7 @@ export default function register() {
       } else {
         // This is running on localhost. Lets check if a service worker still exists or not.
         checkValidServiceWorker(swUrl);
+        console.log("won't register sw. Current env::", process.env.NODE_ENV);
       }
     });
   }
@@ -47,6 +48,8 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+      // debug console message 
+      console.log("service worker is registered")
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {

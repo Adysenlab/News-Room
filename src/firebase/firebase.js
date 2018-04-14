@@ -1,21 +1,21 @@
 import * as firebase from 'firebase';
 
 const prodConfig = {
-  apiKey: "AIzaSyBwuCew1vT0vp1U_S2ln0Gyih4q7P-eAiY",
-  authDomain: "adysen-lab.firebaseapp.com",
-  databaseURL: "https://adysen-lab.firebaseio.com",
-  projectId: "adysen-lab",
-  storageBucket: "adysen-lab.appspot.com",
-  messagingSenderId: "630284844227"
+  apiKey: "AIzaSyDwLMC9ij5E68i_HHSc5DJQCkL9wZk_LyA",
+    authDomain: "test-lab-f7e14.firebaseapp.com",
+    databaseURL: "https://test-lab-f7e14.firebaseio.com",
+    projectId: "test-lab-f7e14",
+    storageBucket: "test-lab-f7e14.appspot.com",
+    messagingSenderId: "112650045023"
 };
 
 const devConfig = {
-  apiKey: "AIzaSyBwuCew1vT0vp1U_S2ln0Gyih4q7P-eAiY",
-    authDomain: "adysen-lab.firebaseapp.com",
-    databaseURL: "https://adysen-lab.firebaseio.com",
-    projectId: "adysen-lab",
-    storageBucket: "adysen-lab.appspot.com",
-    messagingSenderId: "630284844227"
+  apiKey: "AIzaSyDwLMC9ij5E68i_HHSc5DJQCkL9wZk_LyA",
+    authDomain: "test-lab-f7e14.firebaseapp.com",
+    databaseURL: "https://test-lab-f7e14.firebaseio.com",
+    projectId: "test-lab-f7e14",
+    storageBucket: "test-lab-f7e14.appspot.com",
+    messagingSenderId: "112650045023"
 };
 
 const config = process.env.NODE_ENV === 'production'

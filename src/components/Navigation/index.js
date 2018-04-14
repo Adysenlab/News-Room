@@ -61,7 +61,7 @@ const NavigationNonAuth = () =>
       </IconButton>
     }
   >
-    <MenuItem primaryText="Download" />
+    <MenuItem primaryText="Sign Up" containerElement={<Link to={routes.SIGN_UP} />}/>
     <MenuItem primaryText="More Info" />
   </IconMenu>
 </ToolbarGroup>
