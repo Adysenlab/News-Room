@@ -36,7 +36,7 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = () =>
 <Drawer open={true} className= {"w3-sidebar w3-bar-block w3-card "} >
-          <MenuItem  containerElement={<Link to={routes.LANDING} />} >LANDING</MenuItem>
+          
           <MenuItem  containerElement={<Link to={routes.HOME} />} >HOME</MenuItem>
           <MenuItem  containerElement={<Link to={routes.ACCOUNT} />} >ACCOUNT</MenuItem>
           <Divider/>

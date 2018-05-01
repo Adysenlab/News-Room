@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { SignUpLink } from '../SignUp';
+
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
@@ -17,11 +18,26 @@ import {
   StepContent,
 } from 'material-ui/Stepper';
 
+const handleGoogleLogin  = {
+  
+  
+};
+
 const SignInPage = ({ history }) =>
   <div>
     <SignInForm history={history} />
     <PasswordForgetLink />
     <SignUpLink />
+    <RaisedButton
+          
+          disableTouchRipple={true}
+          disableFocusRipple={true}
+          primary={true}
+          onClick={auth.doGoogleSignIn}
+          style={{marginRight: 12}}
+          label='Google Login'
+          
+        />
   </div>
 
 const updateByPropertyName = (propertyName, value) => () => ({

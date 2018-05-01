@@ -24,26 +24,29 @@ const App = () =>
   <Router>
     
     <MuiThemeProvider>
+    <div>
+
       <div >
-    <Navigation />
-    </div>
-    <div className="w3-display-middle" >
-    
-      
+        <Navigation />
+        </div>
+        <div className="w3-display-middle" >
+        
+          
 
-      <hr/>
+          <hr/>
 
-      <Route exact path={routes.LANDING} component={() => <LandingPage />} />
-      <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
-      <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
-      <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
-      <Route exact path={routes.HOME} component={() => <HomePage />} />
-      <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
+          <Route exact path={routes.LANDING} component={() => <LandingPage />} />
+          <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
+          <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
+          <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
+          <Route exact path={routes.HOME} component={() => <HomePage />} />
+          <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
 
-      <hr/>
-      
-     
-      
+          <hr/>
+          
+        
+          
+      </div>
     </div>
     </MuiThemeProvider>
   </Router>

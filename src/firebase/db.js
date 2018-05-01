@@ -2,13 +2,15 @@ import { db } from './firebase';
 
 // User API
 
-export const doCreateUser = (id, username, email) =>
-  db.ref(`users/${id}`).set({
-    username,
-    email,
+export const doCreateCards = (id, tittle, data) =>
+  db.ref(`posts/findings/${id}`).set({
+    tittle,
+    data,
   });
 
-export const onceGetUsers = () =>
-  db.ref('users').once('value');
+export const onceGetPosts = () =>
+  db.collection('posts').doc('findings').get().catch(function(){
+    console.log('error: could not find load document reference');
+  })
 
 // Other db APIs ...

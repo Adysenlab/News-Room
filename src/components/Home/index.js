@@ -5,18 +5,20 @@ import { compose } from 'recompose';
 import withAuthorization from '../Session/withAuthorization';
 import { db } from '../../firebase';
 
+import Postings from './templates/Card'
+
 class HomePage extends Component {
   componentDidMount() {
-    const { onSetUsers } = this.props;
+    const { onSetPosts } = this.props;
 
-    db.onceGetUsers().then(snapshot =>
-      onSetUsers(snapshot.val())
+    db.onceGetPosts().then(snapshot =>
+      onSetPosts(snapshot.data())
     );
   }
 
   render() {
-    const { users } = this.props;
-
+    const { posts } = this.props;
+    
     return (
       <div className="w3-row" >
       
@@ -25,7 +27,7 @@ class HomePage extends Component {
         <h1>Home</h1>
         <p>The Home Page is accessible by every signed in user.</p>
 
-        { !!users && <UserList users={users} /> }
+        { !!posts && <UserList users={posts} /> }
       </div>
       <div className="w3-col m2"> <h1>right panel</h1> </div>
       </div>
@@ -33,23 +35,20 @@ class HomePage extends Component {
     );
   }
 }
-
-const UserList = ({ users }) =>
-  <div>
-    <h2>List of Usernames of Users</h2>
-    <p>(Saved on Sign Up in Firebase Database)</p>
-
-    {Object.keys(users).map(key =>
-      <div key={key}>{users[key].username}</div>
-    )}
-  </div>
+class UserList extends React.Component{
+  render(){
+    return(
+      <Postings postings={this.props.users}/>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
-  users: state.userState.users,
+  posts: state.postState.posts,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSetUsers: (users) => dispatch({ type: 'USERS_SET', users }),
+  onSetPosts: (posts) => dispatch({ type: 'POSTS_SET', posts }),
 });
 
 const authCondition = (authUser) => !!authUser;
