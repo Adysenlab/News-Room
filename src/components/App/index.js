@@ -29,7 +29,7 @@ const App = () =>
       <div >
         <Navigation />
         </div>
-        <div className="w3-display-middle" >
+        <div  >
         
           
 

@@ -7,9 +7,6 @@ import {
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
 
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 const SignUpPage = ({ history }) =>
   <div>
@@ -85,51 +82,42 @@ class SignUpForm extends Component {
     return (
         
 
-        <Card>
-    <CardHeader
-      title="Signup"
-      subtitle="utilize next generation"
-      
-    />
+        <div className="w3-container w3-card w3-white w3-round w3-margin">
+        <h4>SignUpForm</h4>
     
-    <CardText>
-    <TextField
+    
+    <input
         value={username}
         onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
           hintText="Full Name"
         />
         
         <br/>
-        <TextField
+        <input
         value={email}
         onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
           hintText="Email Address"
         />
         
         <br/>
-        <TextField
+        <input
         value={passwordOne}
         onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
-        type="password"
-          hintText="Password"
         />
         <br/>
        
-        <TextField
+        <input
         value={passwordTwo}
         onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
-        type="password"
-          hintText="Confirm Password"
         />
         
         
-    </CardText>
-    <CardActions>
-    <RaisedButton label="Sign Up" primary={true}  type="submit" disabled={isInvalid} />
+    
+    
+    <button label="Sign Up"  type="submit" disabled={isInvalid} />
 
     { error && <p>{error.message}</p> }
-    </CardActions>
-  </Card>
+  </div>
 
 
         
