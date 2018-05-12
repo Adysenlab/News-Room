@@ -2,24 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import SignOutButton from '../SignOut';
+//import SignOut from '../SignOut';
 import * as routes from '../../constants/routes';
+import { auth } from '../../firebase'
 
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
-import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
-import Drawer from 'material-ui/Drawer';
-import Divider from 'material-ui/Divider';
 
-function handleClick() {
-  alert('onClick triggered on the title component');
-}
   
 
 const styles = {
@@ -68,9 +56,15 @@ const NavigationAuth = () =>
     </div>
 
   </div>
-  <a href={<SignOutButton/>} className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
+  <a onClick={() => {
+  auth.doSignOut().then(()=>{
+      window.history.replaceState(routes.LANDING);
+  }).catch(error => {
+      console.log("signout error");
+  })}
+ } className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
   title="My Account">
-    <img src="/w3images/avatar2.png" className="w3-circle" style={styles.SignOut} alt="Avatar"/>
+    <img src="/w3images/avatar2.png" className="w3-circle" style={styles.SignOut} alt="Sign Out"/>
   </a>
  </div>
 </div>
@@ -81,26 +75,25 @@ const NavigationAuth = () =>
 
 
 const NavigationNonAuth = () =>
- <Toolbar>
-<ToolbarGroup firstChild={true}>
-</ToolbarGroup>
-<ToolbarGroup>
-  <ToolbarTitle text="Options" />
-  <FontIcon className="muidocs-icon-custom-sort" />
-  <ToolbarSeparator />
-  <RaisedButton  primary={true} ><Link to={routes.SIGN_IN}>Sign In</Link></RaisedButton>
-  <IconMenu
-    iconButtonElement={
-      <IconButton touch={true}>
-        <NavigationExpandMoreIcon />
-      </IconButton>
-    }
-  >
-    <MenuItem primaryText="Sign Up" containerElement={<Link to={routes.SIGN_UP} />}/>
-    <MenuItem primaryText="More Info" />
-  </IconMenu>
-</ToolbarGroup>
-</Toolbar>
+<div>
+<div className="w3-top">
+ <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
+  href="javascript:void(0);" ><i className="fa fa-bars"></i></a>
+  <a href="#" className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
+  <i className="fa fa-home w3-margin-right"></i>Logo</a>
+  <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
+  title="News"><i className="fa fa-globe"></i></a>
+
+ 
+  <a href={routes.SIGN_IN} className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
+  title="My Account">
+    <img src="/w3images/avatar2.png" className="w3-circle" style={styles.SignOut} alt="Sign In"/>
+  </a>
+ </div>
+</div>
+
+</div>
 
 const mapStateToProps = (state) => ({
   authUser: state.sessionState.authUser,

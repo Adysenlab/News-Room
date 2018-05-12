@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { SignUpLink } from '../SignUp';
 
@@ -50,7 +50,7 @@ class SignInForm extends Component {
     auth.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
+        window.history.replaceState(<Link to={routes.HOME}/>)
       })
       .catch(error => {
         this.setState(updateByPropertyName('error', error));
@@ -77,13 +77,13 @@ class SignInForm extends Component {
 
     return (
       
-        <form onSubmit={this.onSubmit} >
+        <form onSubmit={this.onSubmit} className="w3-display-middle w3-large">
         <div className="w3-container w3-card w3-white w3-round w3-margin">
     
         <h4> Sign in</h4><br/>
         <hr className="w3-clear"/>
     <h4> { error && <p>{error.message}</p> } </h4>
-    <label>eneter the unique ID </label>
+    <label>enter the unique ID </label>
             <input
               value={email}
                 onChange={event => this.setState(updateByPropertyName('email', event.target.value))}

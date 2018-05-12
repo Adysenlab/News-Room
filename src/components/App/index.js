@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
 
 
 import Navigation from '../Navigation';
@@ -23,7 +23,7 @@ import './index.css';
 const App = () =>
   <Router>
     
-    <MuiThemeProvider>
+    
     <div>
 
       <div >
@@ -48,7 +48,6 @@ const App = () =>
           
       </div>
     </div>
-    </MuiThemeProvider>
   </Router>
 
 export default withAuthentication(App);
