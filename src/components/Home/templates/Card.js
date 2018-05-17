@@ -9,11 +9,11 @@ export default class Posting extends React.Component{
             <br/>
         <hr class="w3-clear"/>
           
-        
-        <iframe src={this.props.postings.video} width="560" height="315" 
+        <div className="embed-container">
+        <iframe src={this.props.postings.video} title={this.props.postings.video} width="560" height="315" 
         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
         </iframe>
-            
+         </div>   
 
             <br/>
             

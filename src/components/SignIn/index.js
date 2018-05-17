@@ -11,8 +11,7 @@ import * as routes from '../../constants/routes';
 const SignInPage = ({ history }) =>
   <div>
     <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+    
   
   </div>
 
@@ -37,7 +36,7 @@ class SignInForm extends Component {
 
 
   
-  onSubmit = (event) => {
+  onEmailSignIn = (event) => {
     const {
       email,
       password,
@@ -50,7 +49,7 @@ class SignInForm extends Component {
     auth.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        window.history.replaceState(<Link to={routes.HOME}/>)
+        this.props.history.push("/home");
       })
       .catch(error => {
         this.setState(updateByPropertyName('error', error));
@@ -60,24 +59,29 @@ class SignInForm extends Component {
     event.preventDefault();
   }
 
+  handleGoogleSignin = (event) => {
+   auth.doGoogleSignIn().then( ()=>{
+     this.props.history.push("/home");
+
+   }).catch( (reason)=> {
+     console.log("error login ::"+ reason);
+   })
+    
+  }
+
   render() {
     const {
       email,
       password,
       error,
-      finished,
-      stepIndex,
+
     } = this.state;
 
     
 
-    const isInvalid =
-      password === '' ||
-      email === '';
-
     return (
       
-        <form onSubmit={this.onSubmit} className="w3-display-middle w3-large">
+        <form onSubmit={this.onEmailSignIn} className="w3-display-middle w3-large">
         <div className="w3-container w3-card w3-white w3-round w3-margin">
     
         <h4> Sign in</h4><br/>
@@ -87,7 +91,7 @@ class SignInForm extends Component {
             <input
               value={email}
                 onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-                 hintText="Email Address"
+                 
             />
             <br/>  
             <label>eneter the password that you had set </label>
@@ -95,7 +99,7 @@ class SignInForm extends Component {
             <input
         value={password}
         onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
-          hintText="password"
+          
           type="password"
         />
         <br/>
@@ -103,23 +107,25 @@ class SignInForm extends Component {
           
           
           type ="submit"
-          onSubmit ={ this.onSubmit }
+          onSubmit ={ this.onEmailSignIn }
         >See you </button>
-           
+           <PasswordForgetLink />
+          <SignUpLink />
         </div>
-        <div className="w3-container w3-card w3-white w3-round w3-margin">
+
+        
+          <div className="w3-container w3-card w3-white w3-round w3-margin">
         <h4>Alternate Sign in</h4><br/>
         <hr className="w3-clear"/>
         <button type="button"
-        onClick={auth.doGoogleSignIn} 
-        primary={true}
+        onClick={this.handleGoogleSignin} 
+        primary={"true"}
         className="w3-button w3-theme-d2 w3-margin-bottom"> 
         Login with google</button>
 
           
         </div>
-
-        </form>
+          </form>
     );
   }
 }

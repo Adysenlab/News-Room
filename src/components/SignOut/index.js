@@ -10,7 +10,7 @@ onSubmit= () => {
 auth.doSignOut().then(()=>{
     window.history.replaceState(routes.LANDING);
 }).catch(error => {
-    console.log("signout error");
+    console.log(error);
 })
 }
 

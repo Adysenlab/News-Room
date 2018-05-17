@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   };
   
   const applySetPosts = (state, action) => ({
-    ...state,
+    ...state, // destructuring es6
     posts: action.posts
   });
 

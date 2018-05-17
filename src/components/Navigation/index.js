@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 
 //import SignOut from '../SignOut';
 import * as routes from '../../constants/routes';
 import { auth } from '../../firebase'
-
 
 
   
@@ -36,13 +35,13 @@ const NavigationAuth = () =>
  <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
   href="javascript:void(0);" ><i className="fa fa-bars"></i></a>
-  <a href="#" className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-  <i className="fa fa-home w3-margin-right"></i>Logo</a>
-  <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="News"><i className="fa fa-globe"></i></a>
-  <a href={ <Link to={routes.ACCOUNT} />} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
+  <a href={routes.LANDING} className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
+  <i className="fa fa-home w3-margin-right"></i>Labs</a>
+  <a href="https://adysenlab.github.io/" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
+  title="Development"><i className="fa fa-globe"></i></a>
+  <a href={routes.ACCOUNT} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
   title="Account Settings"><i className="fa fa-user"></i></a>
-  <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
+  <a href={ routes.HOME} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
   title="Messages"><i className="fa fa-envelope"></i></a>
   <div className="w3-dropdown-hover w3-hide-small">
 
@@ -58,9 +57,9 @@ const NavigationAuth = () =>
   </div>
   <a onClick={() => {
   auth.doSignOut().then(()=>{
-      window.history.replaceState(routes.LANDING);
+     console.log("logout done")
   }).catch(error => {
-      console.log("signout error");
+      console.log("Sign-out error");
   })}
  } className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
   title="My Account">
@@ -68,6 +67,7 @@ const NavigationAuth = () =>
   </a>
  </div>
 </div>
+
 
 </div>
 
@@ -79,11 +79,11 @@ const NavigationNonAuth = () =>
 <div className="w3-top">
  <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
-  href="javascript:void(0);" ><i className="fa fa-bars"></i></a>
-  <a href="#" className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-  <i className="fa fa-home w3-margin-right"></i>Logo</a>
-  <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="News"><i className="fa fa-globe"></i></a>
+  href="javascript:void(0);"><i className="fa fa-bars"></i></a>
+  <a href={routes.LANDING} className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
+  <i className="fa fa-home w3-margin-right"></i>Labs</a>
+  <a href="https://adysenlab.github.io/" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
+  title="Development"><i className="fa fa-globe"></i></a>
 
  
   <a href={routes.SIGN_IN} className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
@@ -92,6 +92,7 @@ const NavigationNonAuth = () =>
   </a>
  </div>
 </div>
+
 
 </div>
 
