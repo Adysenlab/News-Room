@@ -7,13 +7,14 @@ import { db } from '../../firebase';
 
 import Postings from './templates/Card'
 
+import { getFirestoreData } from '../../actions/defActions'
 class HomePage extends Component {
   componentDidMount() {
-    const { onSetPosts } = this.props;
-
-    db.onceGetPosts().then(snapshot =>
-      onSetPosts(snapshot.data())
-    );
+    //const { getPosts } = this.props;
+    this.props.getPosts();
+    // db.onceGetPosts().then(snapshot =>
+    //   onSetPosts(snapshot.data())
+    // );
   }
 
   render() {
@@ -27,7 +28,7 @@ class HomePage extends Component {
         <h1>Home</h1>
         <p>The Home Page is accessible by every signed in user.</p>
 
-        { !!posts && <UserList users={posts} /> }
+        { !!posts && <UserList users={() => this.props.getPosts()} /> }
       </div>
       <div className="w3-col m2"> <h1>right panel</h1> </div>
       </div>
@@ -48,7 +49,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSetPosts: (posts) => dispatch({ type: 'POSTS_SET', posts }),
+  getPosts: () => dispatch(getFirestoreData()),
 });
 
 const authCondition = (authUser) => !!authUser;
