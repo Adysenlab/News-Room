@@ -7,7 +7,8 @@ const cursor= (store) => (next) => (action) => {
     console.log("logged middleware" , action);
     switch (action.type){
         case 'POSTS_GET':
-        return action.payload;
+        console.log(action.payload.data);
+        return console.payload;
     }
     next(action);
 } 
