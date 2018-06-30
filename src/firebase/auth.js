@@ -11,7 +11,7 @@ export const doSignInWithEmailAndPassword = (email, password) =>
 
 // Sign In With Google account 
 export const doGoogleSignIn = () => 
-  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider);
+  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
 // Sign out
 export const doSignOut = () =>

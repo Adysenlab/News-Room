@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 //import SignOut from '../SignOut';
 import * as routes from '../../constants/routes';
 import { auth } from '../../firebase'
-
+import { Link } from 'react-router-dom'
 
   
 
@@ -35,14 +35,14 @@ const NavigationAuth = () =>
  <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
   href="javascript:void(0);" ><i className="fa fa-bars"></i></a>
-  <a href={routes.LANDING} className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-  <i className="fa fa-home w3-margin-right"></i>Labs</a>
+  <Link className="w3-bar-item w3-button w3-padding-large w3-theme-d4" to={{pathname: routes.LANDING}} >
+  <i className="fa fa-home w3-margin-right"></i>Labs</Link>
   <a href="https://adysenlab.github.io/" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
   title="Development"><i className="fa fa-globe"></i></a>
-  <a href={routes.ACCOUNT} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="Account Settings"><i className="fa fa-user"></i></a>
-  <a href={ routes.HOME} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="Messages"><i className="fa fa-envelope"></i></a>
+  <Link title="Account Settings" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" to={{pathname: routes.ACCOUNT}} >  
+  <i className="fa fa-user"></i></Link>
+  <Link title="Messages" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" to={{pathname: routes.HOME}} > 
+  <i className="fa fa-envelope"></i></Link>
   <div className="w3-dropdown-hover w3-hide-small">
 
 
@@ -80,16 +80,16 @@ const NavigationNonAuth = () =>
  <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
   href="javascript:void(0);"><i className="fa fa-bars"></i></a>
-  <a href={routes.LANDING} className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-  <i className="fa fa-home w3-margin-right"></i>Labs</a>
+  <Link className="w3-bar-item w3-button w3-padding-large w3-theme-d4" to={{pathname: routes.LANDING}} >
+  <i className="fa fa-home w3-margin-right"></i>Labs</Link>
   <a href="https://adysenlab.github.io/" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
   title="Development"><i className="fa fa-globe"></i></a>
 
  
-  <a href={routes.SIGN_IN} className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
+   <Link to={{pathname:routes.SIGN_IN}} className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
   title="My Account">
     <img src="/w3images/avatar2.png" className="w3-circle" style={styles.SignOut} alt="Sign In"/>
-  </a>
+  </Link>
  </div>
 </div>
 
