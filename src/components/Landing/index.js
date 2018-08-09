@@ -23,8 +23,8 @@ const style = {
   
    render(){
      return(
-      <div >
- <div class="w3-container w3-padding-32 w3-theme-d1 w3-pale-yellow w3-center" >
+      <div  >
+ <div class="w3-container w3-pale-yellow w3-center" style={{"padding":"128px 16px"}} >
       <h1 class="w3-margin w3-jumbo">Adysen-lab</h1>
       <p class="w3-xlarge">Innovation within</p>
       <button className="w3-button w3-black w3-padding-large w3-large w3-margin-top" 
@@ -35,7 +35,7 @@ const style = {
     
     <div class="w3-third w3-section">
     <div class="w3-card-4">
-    <img src="images/img_5terre.jpg" />
+    <img src="images/future.jpg" style={{"width":"100%"}}/>
     <div class="w3-container w3-white">
     <h4>Cinque Terre</h4>
     <p>The Cinque Terre (five lands) is a portion of the Italian Riviera. The coastline with five villages: Monterosso, Vernazza, Corniglia, Manarola, and Riomaggiore
@@ -46,7 +46,7 @@ const style = {
     
     <div class="w3-third w3-section">
     <div class="w3-card-4">
-    <img src="images/img_monterosso.jpg"  />
+    <img src="images/atomics.jpg" style={{"width":"100%"}} />
     <div class="w3-container w3-white">
     <h4>Monterosso</h4>
     <p>Monterosso al Mare is located at the center of a small natural gulf, protected by a small artificial reef,
@@ -57,7 +57,7 @@ const style = {
     
     <div class="w3-third w3-section">
     <div class="w3-card-4">
-    <img src="images/img_vernazza.jpg" />
+    <img src="images/success.jpg" style={{"width":"100%"}} />
     <div class="w3-container w3-white">
     <h4>Vernazza</h4>
     <p>Vernazza is another of the five towns in the region. Vernazza is the fourth town heading north. It has no car traffic, and is one of the truest
@@ -69,7 +69,7 @@ const style = {
     </div>
     
     <div class="w3-container w3-theme-d4">
-    <p class="w3-large">Europe Italy</p>
+    <p class="w3-large">Radii Labs Pvt. Ltd.</p>
     </div>
   </div>
 

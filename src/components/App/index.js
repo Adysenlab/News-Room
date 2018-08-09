@@ -9,8 +9,6 @@ import {
 
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
-import SignUpPage from '../SignUp';
-import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
 import AccountPage from '../Account';
@@ -23,14 +21,12 @@ import './index.css';
 const App = () =>
   <Router>
     
-    <div>
+    <div >
 
       <Navigation />
    
         <div   >
         <Route exact path={routes.LANDING} component={() => <LandingPage />} />
-          
-          
           <Route exact path={routes.HOME} component={() => <HomePage />} />
           <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
        </div>

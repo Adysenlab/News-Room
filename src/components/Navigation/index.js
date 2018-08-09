@@ -30,71 +30,58 @@ const Navigation = ({ authUser }) =>
   </div>
 
 const NavigationAuth = () =>
-<div>
-<div className="w3-top">
- <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
-  href="javascript:void(0);" ><i className="fa fa-bars"></i></a>
-  <a href={routes.LANDING} className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-  <i className="fa fa-home w3-margin-right"></i>Labs</a>
-  <a href="https://adysenlab.github.io/" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="Development"><i className="fa fa-globe"></i></a>
-  <a href={routes.ACCOUNT} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="Account Settings"><i className="fa fa-user"></i></a>
-  <a href={ routes.HOME} className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="Messages"><i className="fa fa-envelope"></i></a>
-  <div className="w3-dropdown-hover w3-hide-small">
 
+<div class="w3-row w3-padding w3-theme-d2 w3-xlarge w3-top">
+  <div class="w3-quarter">
+    <div class="w3-bar">
+      <a href="https://adysenlab.github.io/" title=" devops page" class="w3-bar-item w3-button"><i class="fa fa-bars"></i></a>
+    </div>
+  </div>
 
-    <button className="w3-button w3-padding-large" 
-    title="Notifications"><i className="fa fa-bell"></i><span className="w3-badge w3-right w3-small w3-green">3</span></button>     
-    <div className="w3-dropdown-content w3-card-4 w3-bar-block" style={styles.Notifications}>
-      <a href="#" className="w3-bar-item w3-button">One new friend request</a>
-      <a href="#" className="w3-bar-item w3-button">John Doe posted on your wall</a>
-      <a href="#" className="w3-bar-item w3-button">Jane likes your post</a>
+  <div class="w3-half">
+    <input type="text" class="w3-amber w3-border-0 w3-padding" style={{"width":"100%"}} />
+  </div>
+
+  <div class="w3-quarter">
+    <div class="w3-bar w3-xlarge">
+      <a href="#" class="w3-bar-item w3-button w3-left"><i class="fa fa-search"></i></a>
+      <a href="#"  
+       onClick= {() => {
+        auth.doSignOut().then(()=>{
+           console.log("logout done")
+        }).catch(error => {
+            console.log("Sign-out error");
+        })}
+       }
+       class="w3-bar-item w3-button w3-right"
+       ><img class="w3-hide-small w3-circle" src="images/img_avtar.jpg" style={{"height":"40px"}} alt="Sign Out" /></a>
     </div>
 
   </div>
-  <a onClick={() => {
-  auth.doSignOut().then(()=>{
-     console.log("logout done")
-  }).catch(error => {
-      console.log("Sign-out error");
-  })}
- } className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
-  title="My Account">
-    <img src="/w3images/avatar2.png" className="w3-circle" style={styles.SignOut} alt="Sign Out"/>
-  </a>
- </div>
-</div>
-
-
 </div>
 
 
 
 
 const NavigationNonAuth = () =>
-<div>
-<div className="w3-top">
- <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" 
-  href="javascript:void(0);"><i className="fa fa-bars"></i></a>
-  <a href={routes.LANDING} className="w3-bar-item w3-button w3-padding-large w3-theme-d4">
-  <i className="fa fa-home w3-margin-right"></i>Labs</a>
-  <a href="https://adysenlab.github.io/" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" 
-  title="Development"><i className="fa fa-globe"></i></a>
+<div class="w3-row w3-padding w3-theme-d2 w3-xlarge">
+  <div class="w3-half">
+    <div class="w3-bar">
+      <a href="https://adysenlab.github.io/" title="Dev ops page" class="w3-bar-item w3-button w3-left"><i class="fa fa-bars"></i></a>
+    </div>
+  </div>
 
  
-  <a href={routes.SIGN_IN} className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" 
-  title="My Account">
-    <img src="/w3images/avatar2.png" className="w3-circle" style={styles.SignOut} alt="Sign In"/>
-  </a>
- </div>
+
+  <div class="w3-half">
+    <div class="w3-bar w3-xlarge">
+      
+      <a href={routes.LANDING} title="main page"class="w3-bar-item w3-button w3-right"><img class="w3-hide-small w3-circle" src="images/img_avtar.jpg" style={{"height":"40px"}} /></a>
+    </div>
+
+  </div>
 </div>
 
-
-</div>
 
 const mapStateToProps = (state) => ({
   authUser: state.sessionState.authUser,

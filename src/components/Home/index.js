@@ -9,10 +9,6 @@ import Postings from './templates/Card'
 
 import { getFirestoreData } from '../../actions/defActions'
 
-const pageStyle = {
-  'max-width':'1400px',
-  'margin-top':'80px'
-}
 
 class HomePage extends Component {
   componentDidMount() {
@@ -27,25 +23,16 @@ class HomePage extends Component {
   render() {
     const { posts } = this.props;
     
+    const pageStyle = {
+      'max-width':'1400px',
+      'margin-top':'80px'
+    }
+    
     return (
       
       <div   >
 
-        
-        
-
-        { !!posts && <UserList users={() => this.props.getPosts()} /> }
- 
-      </div>
-      
-    );
-  }
-}
-class UserList extends React.Component{
-  render(){
-    return(
-      <div class="w3-container w3-content" style ={this.pageStyle}>
-<div >    
+        <div class="w3-container w3-content" style ={pageStyle}>    
   
   <div class="w3-row">
     
@@ -239,6 +226,20 @@ class UserList extends React.Component{
 
 </div>
 <br/>
+        
+
+        { !!posts && <UserList users={() => this.props.getPosts()} /> }
+ 
+      </div>
+      
+    );
+  }
+}
+class UserList extends React.Component{
+  render(){
+    return(
+      <div >
+
       <Postings postings={this.props.users}/>
 
       </div>
