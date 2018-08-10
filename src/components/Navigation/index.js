@@ -32,19 +32,20 @@ const Navigation = ({ authUser }) =>
 const NavigationAuth = () =>
 
 <div class="w3-row w3-padding w3-theme-d2 w3-xlarge w3-top">
+
   <div class="w3-quarter">
     <div class="w3-bar">
-      <a href="https://adysenlab.github.io/" title=" devops page" class="w3-bar-item w3-button"><i class="fa fa-bars"></i></a>
+      <a href="#" title=" devops page" className="w3-bar-item w3-button"><i className="fas fa-chalkboard"></i></a>
     </div>
   </div>
 
-  <div class="w3-half">
-    <input type="text" class="w3-amber w3-border-0 w3-padding" style={{"width":"100%"}} />
+  <div class="w3-quarter">
+  <a href="#" title=" devops page" className="w3-bar-item w3-button"><i className="fa fa-bars"></i></a>
   </div>
 
   <div class="w3-quarter">
     <div class="w3-bar w3-xlarge">
-      <a href="#" class="w3-bar-item w3-button w3-left"><i class="fa fa-search"></i></a>
+      <a href="#" className="w3-bar-item w3-button w3-left"><i className="fa fa-search"></i></a>
       <a href="#"  
        onClick= {() => {
         auth.doSignOut().then(()=>{
@@ -54,7 +55,7 @@ const NavigationAuth = () =>
         })}
        }
        class="w3-bar-item w3-button w3-right"
-       ><img class="w3-hide-small w3-circle" src="images/img_avtar.jpg" style={{"height":"40px"}} alt="Sign Out" /></a>
+       ><i class="fas fa-hand-point-down" title="Options"></i></a>
     </div>
 
   </div>
@@ -67,7 +68,7 @@ const NavigationNonAuth = () =>
 <div class="w3-row w3-padding w3-theme-d2 w3-xlarge">
   <div class="w3-half">
     <div class="w3-bar">
-      <a href="https://adysenlab.github.io/" title="Dev ops page" class="w3-bar-item w3-button w3-left"><i class="fa fa-bars"></i></a>
+      <a href="https://adysenlab.github.io/" title="Dev ops page" class="w3-bar-item w3-button w3-left"><i className="fas fa-chalkboard"></i></a>
     </div>
   </div>
 
@@ -76,7 +77,7 @@ const NavigationNonAuth = () =>
   <div class="w3-half">
     <div class="w3-bar w3-xlarge">
       
-      <a href={routes.LANDING} title="main page"class="w3-bar-item w3-button w3-right"><img class="w3-hide-small w3-circle" src="images/img_avtar.jpg" style={{"height":"40px"}} /></a>
+      <a href={routes.LANDING} title="main page"class="w3-bar-item w3-button w3-right"><i class="fas fa-hands"></i></a>
     </div>
 
   </div>

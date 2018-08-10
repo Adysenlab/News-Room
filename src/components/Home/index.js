@@ -218,6 +218,7 @@ class HomePage extends Component {
         <p><i class="fa fa-bug w3-xxlarge"></i></p>
       </div>
       
+
     </div>
     
 
@@ -229,7 +230,10 @@ class HomePage extends Component {
         
 
         { !!posts && <UserList users={() => this.props.getPosts()} /> }
- 
+        <div class="w3-container w3-theme-d4">
+    <p class="w3-large">Radii Labs Pvt. Ltd. an enterprice of <a href=" https://adysenlab.github.io/ ">Adysenlab</a>
+    </p>
+    </div>
       </div>
       
     );

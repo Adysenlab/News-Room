@@ -2,6 +2,7 @@ import React from 'react';
 import { auth } from '../../firebase';
 import SignInForm from '../SignIn'
 import * as routes from '../../constants/routes';
+
 const style = {
   'max-width':'1400px',
   'margin-top':'80px'
@@ -11,10 +12,13 @@ const style = {
  export default class LandingPage extends React.Component{
 
 
+  
+
   handleGoogleSignin = (event) => {
     auth.doGoogleSignIn().then( ()=>{
-      this.props.history.push(routes.HOME);
-  
+      // redirect to the home route
+      window.location.assign(routes.HOME);
+
     }).catch( (reason)=> {
       console.log("error login ::"+ reason);
     })
@@ -69,7 +73,8 @@ const style = {
     </div>
     
     <div class="w3-container w3-theme-d4">
-    <p class="w3-large">Radii Labs Pvt. Ltd.</p>
+    <p class="w3-large">Radii Labs Pvt. Ltd. an enterprice of <a href=" https://adysenlab.github.io/ ">Adysenlab</a>
+    </p>
     </div>
   </div>
 

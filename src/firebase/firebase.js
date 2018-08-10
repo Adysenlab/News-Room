@@ -28,8 +28,10 @@ if (!firebase.apps.length) {
 // using a recent beta build of cloud firestore
 const db = firebase.firestore();
 const auth = firebase.auth();
+const messaging = firebase.messaging();
 
 export {
   db,
   auth,
+  messaging,
 };
