@@ -29,8 +29,8 @@ const style = {
      return(
       <div  >
  <div class="w3-container w3-pale-yellow w3-center" style={{"padding":"128px 16px"}} >
-      <h1 class="w3-margin w3-jumbo">Adysen-lab</h1>
-      <p class="w3-xlarge">Innovation within</p>
+      <h1 class="w3-margin w3-jumbo">Radii Labs</h1>
+      <p class="w3-xlarge">Making machines humane</p>
       <button className="w3-button w3-black w3-padding-large w3-large w3-margin-top" 
       onClick={this.handleGoogleSignin}>Login With Google</button>
     </div>
