@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+import { FirebaseFirestore } from '@firebase/firestore-types';
 require("firebase/firestore");
 const prodConfig = {
   apiKey: "AIzaSyDvrw3MpeJyFbRcU7gZs9o8nelq6I8ot8I",
@@ -29,6 +30,7 @@ if (!firebase.apps.length) {
 const db = firebase.firestore();
 const auth = firebase.auth();
 const messaging = firebase.messaging();
+const storage = firebase.storage();
 
 export {
   db,
