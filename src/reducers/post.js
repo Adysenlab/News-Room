@@ -6,12 +6,12 @@ const INITIAL_STATE = {
   
   const applySetPosts = (state, action) => ({
     ...state, // destructuring es6
-    posts: action.posts
+    posts: action.payload
   });
 
 function postReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case 'PROJ_SEARCH' : {
+    case 'PROJECTS' : {
       console.log('posts set')
       return applySetPosts(state, action);
     

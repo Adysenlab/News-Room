@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-
+import { bindActionCreators } from 'redux';
 import withAuthorization from '../Session/withAuthorization';
-import { db } from '../../firebase';
+
 
 import Postings from './templates/Card'
 
-import { getFirestoreData, getProjects } from '../../actions/defActions'
+import { 
+  getUserLogs,
+   getProjects 
+  } from '../../actions/defActions'
 
 
 class HomePage extends Component {
-  componentDidMount() {
+  componentWillMount() {
     //const { getPosts } = this.props;
-    this.props.getPosts();
+     this.props.getUserLogs(this.props.authUser.email);
     // db.onceGetPosts().then(snapshot =>
     //   onSetPosts(snapshot.data())
     // );
@@ -24,15 +27,15 @@ class HomePage extends Component {
     const { posts } = this.props;
     
     const pageStyle = {
-      'max-width':'1400px',
-      'margin-top':'80px'
+      'maxWidth':'1400px',
+      'marginTop':'80px'
     }
     
     return (
       
       <div   >
 
-        <div class="w3-container w3-content" style ={pageStyle}>    
+        <div class="w3-container w3-content" style= {pageStyle} >    
   
   <div class="w3-row">
     
@@ -40,8 +43,9 @@ class HomePage extends Component {
      
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" alt="Avatar" /></p>
+         <h4 class="w3-center">Welcome {this.props.authUser.displayName}</h4>
+           
+         <p class="w3-center"><img class="w3-circle" alt="Avatar" /></p>
          <hr/>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
@@ -53,15 +57,15 @@ class HomePage extends Component {
       
       <div class="w3-card w3-round">
         <div class="w3-white">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+          <button  class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <button  class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          <button class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br/>
@@ -112,7 +116,7 @@ class HomePage extends Component {
       
 
       <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+        <span  class="w3-button w3-theme-l3 w3-display-topright">
           <i class="fa fa-remove"></i>
         </span>
         <p><strong>Hey!</strong></p>
@@ -130,7 +134,7 @@ class HomePage extends Component {
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity">Social Media template by w3.css</h6>
-              <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+              <p class="w3-border w3-padding">Status: Feeling Blue</p>
               <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button> 
             </div>
           </div>
@@ -253,11 +257,16 @@ class UserList extends React.Component{
 
 const mapStateToProps = (state) => ({
   posts: state.postState.posts,
+  user: state.userState,
+  authUser: state.sessionState.authUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => dispatch(getProjects()),
-});
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    getProjects,
+    getUserLogs
+}, dispatch);
+}
 
 const authCondition = (authUser) => !!authUser;
 

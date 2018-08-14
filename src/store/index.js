@@ -1,13 +1,20 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
 
 //all middle wares
-import cursor from '../middleware';  
-import thunk from "redux-thunk";
-import promise from "redux-promise-middleware"
+import logger from '../middleware/logger';  
 
 
-const store = createStore(rootReducer,applyMiddleware(cursor, thunk));
+
+const initialState = {}
+
+const store = createStore(
+    rootReducer,
+    initialState,
+     compose(
+         applyMiddleware( logger),
+         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
+        );
 store.subscribe(()=> {
     console.log("store updated! ", store.getState())
 })

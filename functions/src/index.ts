@@ -6,7 +6,7 @@ import * as admin from 'firebase-admin';
 
 // add Random uuid generator support for the new users
 
-const uuidv4 = require('uuid/v4');
+
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -25,17 +25,17 @@ export const onNewUserLogin =functions.auth.user().onCreate(function(event){
     // Get the uid and display name of the newly created user.
   const mailid = event.email;
   const displayName = event.displayName;
-
+    const uuid = event.uid;
   // Send a welcome email to the newly created user.
   // The sendEmail() method is left as an exercise to the reader.
-   createNewUserRecords(mailid, displayName);
+   createNewUserRecords(mailid, displayName, uuid);
 });
 
-function createNewUserRecords(uid,displayName){
+function createNewUserRecords(mail,displayName, uuid){
 
     // Create a reference to the SF doc.
 
-    const IamDocRef = admin.firestore().doc('users/'+displayName);
+    const IamDocRef = admin.firestore().doc('users/'+mail);
    
 
      admin.firestore().runTransaction(function(transaction) {
@@ -44,12 +44,12 @@ function createNewUserRecords(uid,displayName){
             if (!IamDoc.exists) {
                 console.log("a new user roasted" + displayName);
                 const newUser = {
-                    uuid: uuidv4(),
-                    email : uid,
+                    uid : uuid,
+                    email : mail,
                     name : displayName, 
                     LastSeen : new Date,
                     FCM : "null",
-                     
+                    isDeveloper: "false"
 
                 }
 

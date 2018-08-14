@@ -1,6 +1,6 @@
 import React from 'react';
 import { auth } from '../../firebase';
-import SignInForm from '../SignIn'
+
 import * as routes from '../../constants/routes';
 
 const style = {

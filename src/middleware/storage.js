@@ -17,4 +17,3 @@ const cursor= (store) => (next) => (action) => {
 } 
 
 export default cursor;
-
