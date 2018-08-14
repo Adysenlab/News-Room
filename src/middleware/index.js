@@ -6,9 +6,12 @@
 const cursor= (store) => (next) => (action) => {
     console.log("logged middleware" , action);
     switch (action.type){
-        case 'POSTS_GET':
-        console.log(action.payload.data);
+        case 'PROJ_SEARCH':
+        console.log(action.payload);
         return console.payload;
+        break;
+        default :
+            console.log(action);
     }
     next(action);
 } 

@@ -7,7 +7,7 @@ import { db } from '../../firebase';
 
 import Postings from './templates/Card'
 
-import { getFirestoreData } from '../../actions/defActions'
+import { getFirestoreData, getProjects } from '../../actions/defActions'
 
 
 class HomePage extends Component {
@@ -256,7 +256,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getPosts: () => dispatch(getFirestoreData()),
+  getPosts: () => dispatch(getProjects()),
 });
 
 const authCondition = (authUser) => !!authUser;

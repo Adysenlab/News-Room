@@ -13,9 +13,29 @@ all the projects that are being processed in the promotional
 
 */
 
-var Projects = ['Database']
-var DEMONS="labs/computation/demonstrational"
- Projects.forEach(element => {
-   
- });
+const mediaRef = db.collection('media');
+
+const usersRef = db.collection('users');
+
+const projectsRef = db.collection('projects');
+
+const educationalRef = db.collection('study');
+
+/**
+ * 
+ * intermittently there has to be updates regarding the
+ * whereabouts in the world of Radii
+ *  
+ */
+
+const BlogsRef = db.collection('Blog');  // inclusive of vlogs
 // Other db APIs ...
+
+export {
+      db,
+      mediaRef,
+      usersRef,
+      projectsRef,
+      educationalRef,
+      BlogsRef
+};

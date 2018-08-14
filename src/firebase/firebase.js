@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-import { FirebaseFirestore } from '@firebase/firestore-types';
 require("firebase/firestore");
 const prodConfig = {
   apiKey: "AIzaSyDvrw3MpeJyFbRcU7gZs9o8nelq6I8ot8I",

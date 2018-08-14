@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 
 function postReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case 'POSTS_SET' : {
+    case 'PROJ_SEARCH' : {
       console.log('posts set')
       return applySetPosts(state, action);
     

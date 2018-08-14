@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   users: {},
 };
 
+// pure immutable function
 const applySetUsers = (state, action) => ({
   ...state,
   users: action.users

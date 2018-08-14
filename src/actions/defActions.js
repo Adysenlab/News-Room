@@ -1,26 +1,24 @@
-import { db } from '../firebase/firebase'
+import  * as firestore from '../firebase/db'
 
-export function getFirestoreData(){
-    // let ref=db.doc('labs/computation/demonstrational/Database/software /releaseSchedules').get()
-    // return dispatch =>{
+export function getProjects(){
+    let ref=firestore.projectsRef.get().then(function(snap) {
+        snap.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+             
         
-    //         dispatch({
-    //             type:'POSTS_GET',
-    //             payload: ref.data()
-    //         });
+                dispatch({
+                    type:'PROJ_SEARCH',
+                    payload: doc.data()
+                })
+           
+        });
+    
+    }).catch((error) => {
+        console.log('Error' + error);
         
-    // }
-    let ref=db.doc('labs/computation/demonstrational/Database/software /releaseSchedules').get()
-    return{
-         type:"POSTS_GET",
+    })
 
-        payload: db.doc('labs/computation/demonstrational/Database/software /releaseSchedules').get().then(function(doc) {
-            return doc;
-        }).catch( (error) =>{
-            console.log(error);
-        })
-
-    }
 
 
 }
