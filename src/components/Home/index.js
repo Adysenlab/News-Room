@@ -9,7 +9,8 @@ import Postings from './templates/Card'
 
 import { 
   getUserLogs,
-   getProjects 
+   getProjects,
+   getFeedDocklets
   } from '../../actions/defActions'
 
 
@@ -17,6 +18,7 @@ class HomePage extends Component {
   componentWillMount() {
     //const { getPosts } = this.props;
      this.props.getUserLogs(this.props.authUser.email);
+     this.props.getFeedDocklets(0);
     // db.onceGetPosts().then(snapshot =>
     //   onSetPosts(snapshot.data())
     // );
@@ -233,9 +235,9 @@ class HomePage extends Component {
 <br/>
         
 
-        { !!posts && <UserList users={() => this.props.getPosts()} /> }
+        { !!posts && <UserList users={() => this.props.getFeedDocklets(1)} /> }
         <div class="w3-container w3-theme-d4">
-    <p class="w3-large">Radii Labs Pvt. Ltd. an enterprice of <a href=" https://adysenlab.github.io/ ">Adysenlab</a>
+    <p class="w3-large" >Radii Labs Pvt. Ltd. an enterprice of <a href=" https://adysenlab.github.io/ ">Adysenlab</a>
     </p>
     </div>
       </div>
@@ -264,7 +266,8 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
     getProjects,
-    getUserLogs
+    getUserLogs,
+    getFeedDocklets 
 }, dispatch);
 }
 

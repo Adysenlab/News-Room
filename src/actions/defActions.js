@@ -13,3 +13,10 @@ export function getUserLogs(username) {
       payload : username  
     };
 }
+export function getFeedDocklets(count) { 
+	console.log('get docklets') 
+    return {
+      type: "USER_GET_FEED_DOCKLETS",  
+      payload : count  
+    };
+}
