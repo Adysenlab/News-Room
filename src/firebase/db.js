@@ -13,7 +13,7 @@ all the projects that are being processed in the promotional
 
 */
 
-const mediaRef = db.collection('media');
+const AssembladgeFeedDockletRef = db.collection('/assemblage/feeds/dockets');
 
 const usersRef = db.collection('users');
 
@@ -33,7 +33,7 @@ const BlogsRef = db.collection('Blog');  // inclusive of vlogs
 
 export {
       db,
-      mediaRef,
+      AssembladgeFeedDockletRef,
       usersRef,
       projectsRef,
       educationalRef,

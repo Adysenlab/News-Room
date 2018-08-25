@@ -1,22 +1,29 @@
+import * as firestore from '../firebase/db'
+
+
 const INITIAL_STATE = {
   user: {},
 };
 
 // pure immutable function
-const applySetUsers = (state, action) => ({
+const getUserImg = (state, action) => ({
   ...state,
   user: action.users
 });
 
-const getUserImg = (state, action) => ({
+const applyToUserLogs = (state, action) => ({
   ...state,
-  photo: action.payload
+  data: action.payload,
+  newData: firestore.AssembladgeFeedDockletRef.get().then(userInfo =>
+        userInfo,
+        
+        ).catch(error => console.log(error))
 });
 
 function userReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case 'USERS_SET' : {
-      return applySetUsers(state, action);
+    case 'USER_LOGS_GET' : {
+      return applyToUserLogs(state, action);
     }
     case 'USER_IMG_GET': {
       return getUserImg(state, action);
