@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
 
 //all middle wares
-import logger from '../middleware/logger';  
+import thunk from '../middleware/thunk';  
 
 
 
@@ -12,7 +12,7 @@ const store = createStore(
     rootReducer,
     initialState,
      compose(
-         applyMiddleware( logger),
+         applyMiddleware( thunk),
          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
         );
 store.subscribe(()=> {

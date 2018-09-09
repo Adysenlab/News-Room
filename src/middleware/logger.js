@@ -9,6 +9,7 @@ const logger= (store) => (next) => (action) => {
     console.log("logged middleware" , action);
     switch (action.type){
         case 'USER_LOGS_GET':
+        //the middlewares should be non blocking --should be resolved with immediate effect
         firestore.AssembladgeFeedDockletRef.get().then(snapshot => {
           snapshot.forEach(doc => {
         console.log("Parent Document ID: ", doc.id);
@@ -27,6 +28,7 @@ const logger= (store) => (next) => (action) => {
         
         )
         }).catch(error => console.log(error))
+        //the middlewares should be non blocking --should be resolved with immediate effect
         break;
                 
         case "USER_GET_FEED_DOCKLETS":

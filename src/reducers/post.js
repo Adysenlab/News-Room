@@ -1,14 +1,19 @@
 const INITIAL_STATE = {
   // the object prototype that holds the data to be displayed on site
-    posts: {},
-    pjhandles: []  
+  // memory management routines can be found in this 
+    docklets:[] 
+    //ticker useful to find the next set of data to be queried
   };
   
-  const applySetPosts = (state, action) => ({
-    ...state, // destructuring es6
-    posts: action.payload
-  });
+const applySetPosts = (state, action) => ({
+  ...state, // destructuring es6
+  posts: action.payload
+});
 
+const applyAddDocklet = (state, action) => ({
+  ...state, // destructuring es6
+  docklets: [...state.docklets , action.payload] 
+});
 function postReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
     case 'PROJECTS' : {
@@ -26,6 +31,11 @@ function postReducer(state = INITIAL_STATE, action) {
     case 'ADD_POST': {
       console.log("posts add" , action )
       return state = state + action.payload; 
+    };
+    break;
+    case 'DOCKLET_FOUND':{
+      console.log("adding docklet to state", action)
+      return applyAddDocklet(state, action);
     };
     break;
     default : return state;
