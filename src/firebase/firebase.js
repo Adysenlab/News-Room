@@ -2,6 +2,7 @@ import * as firebase from 'firebase';
 import '@firebase/functions';
 require("firebase/firestore");
 
+
 const prodConfig = {
   apiKey: "AIzaSyDvrw3MpeJyFbRcU7gZs9o8nelq6I8ot8I",
   authDomain: "radii-website.firebaseapp.com",
@@ -34,7 +35,7 @@ db.settings(settings);
 const auth = firebase.auth();
 const messaging = firebase.messaging();
 const storage = firebase.storage();
-const functions = firebase.functions();
+
 
 export {
   db,
@@ -44,4 +45,3 @@ export {
 
 };
 
-export default   functions ;  // common js functions 

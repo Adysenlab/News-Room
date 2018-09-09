@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import { feedDockets }  from '../constants/constants'
 
+const feedDockets = '/assemblage/feeds/dockets'
 
 
 /**
@@ -9,13 +9,13 @@ import { feedDockets }  from '../constants/constants'
  * the prime retiever of data from database ... when a callable cloudfunction is started
  */
 
- export default const onFetchFeedDockletsFromDatabase = functions.https.onCall((data, context) =>{
+ export  const onFetchFeedDockletsFromDatabase = functions.https.onCall((data, context) =>{
  // Message text passed from the client -- the hash loader that is used to select tht 
 const text = data.text;
 // Authentication / user information is automatically added to the request.
 const uid = context.auth.uid;
-const name = context.auth.token.name || null;
-const picture = context.auth.token.picture || null;
+//const name = context.auth.token.name || null;
+//const picture = context.auth.token.picture || null;
 const email = context.auth.token.email || null;
 
 // required for Cloud messaging FCM token
@@ -39,7 +39,7 @@ const hash =0 ; // to be changed to a server timestamp fuction
 		}
 //match if the correct user id is used against the name of the callable cloud functiion
 	if (sessionExists(uid, email)) { 
-		return parseResult(getDocklets(feedDockets, text), hash)
+		parseResult(getDocklets(feedDockets, text), hash)
 	}else{
 		// return Error in Json Structure
 		
@@ -49,6 +49,7 @@ const hash =0 ; // to be changed to a server timestamp fuction
 		  throw new functions.https.HttpsError('failed-precondition', 'The function must be called ' +
 		      'while authenticated.');
 		}
+
 	}
 
 
@@ -56,7 +57,7 @@ const hash =0 ; // to be changed to a server timestamp fuction
  });
 
 
- function sessionExists(userSessionID, mailID ) {
+ function sessionExists(userSessionID, mailID ):Boolean {
  	admin.auth().getUserByEmail(mailID).then((record) =>{
  		if (record.uid === userSessionID) { 
  			return true
@@ -66,7 +67,8 @@ const hash =0 ; // to be changed to a server timestamp fuction
  	}).catch(error => {
  		console.error("error :" + error)
  		return false
- 	})
+	 })
+	 return false
  }
 
 
